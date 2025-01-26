@@ -48,6 +48,7 @@ RUN chgrp -Rf 0 /server && chmod -Rf g=u /server; chgrp -Rf 0 /home/steam && chm
 WORKDIR ${HOMEDIR}
 # Expose ports
 EXPOSE 16261-16262/udp \
+    8766-8767/udp \
   27015/tcp
 
 ENTRYPOINT ["/server/scripts/entry.sh"]
