@@ -13,7 +13,8 @@ ENV HOME="${HOMEDIR}"
 
 # Install required packages
 RUN dnf install -y \
-  dos2unix;
+  dos2unix \
+  && dnf clean all -y
 
 # Generate locales to allow other languages in the PZ Server
 RUN sed -i 's/^# *\(es_ES.UTF-8\)/\1/' /etc/locale.gen \
