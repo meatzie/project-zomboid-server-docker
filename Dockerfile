@@ -12,11 +12,8 @@ ENV STEAMAPPDIR="${HOMEDIR}/${STEAMAPP}-dedicated"
 ENV HOME="${HOMEDIR}"
 
 # Install required packages
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends --no-install-suggests \
-  dos2unix \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+RUN dnf install -y \
+  dos2unix;
 
 # Generate locales to allow other languages in the PZ Server
 RUN sed -i 's/^# *\(es_ES.UTF-8\)/\1/' /etc/locale.gen \
