@@ -44,6 +44,9 @@ RUN chmod 550 /server/scripts/search_folder.sh
 # Create required folders to keep their permissions on mount
 RUN mkdir -p "${HOMEDIR}/Zomboid"
 
+# Change permissions to support running rootless
+RUN chgrp -Rf 0 /server && chmod -Rf g=u /server; chgrp -Rf 0 /home/steam && chmod -Rf g=u /home/steam;
+
 WORKDIR ${HOMEDIR}
 # Expose ports
 EXPOSE 16261-16262/udp \
